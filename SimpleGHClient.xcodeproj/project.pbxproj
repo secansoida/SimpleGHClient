@@ -17,6 +17,7 @@
 		D1F9C7BF1DD8B00A002C2297 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */; };
 		D1F9C7C11DD8B00D002C2297 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */; };
 		D1F9C7C31DD8B010002C2297 /* OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C21DD8B010002C2297 /* OctoKit.framework */; };
+		D1F9C7CA1DD8BB9E002C2297 /* ISO8601DateFormatter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C91DD8BB9E002C2297 /* ISO8601DateFormatter.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 		D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D1F9C7C21DD8B010002C2297 /* OctoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OctoKit.framework; path = Carthage/Build/iOS/OctoKit.framework; sourceTree = "<group>"; };
+		D1F9C7C91DD8BB9E002C2297 /* ISO8601DateFormatter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ISO8601DateFormatter.framework; path = Carthage/Build/iOS/ISO8601DateFormatter.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 				D1F9C7BD1DD8B005002C2297 /* AFNetworking.framework in Frameworks */,
 				D1F9C7BF1DD8B00A002C2297 /* Mantle.framework in Frameworks */,
 				D1F9C7C11DD8B00D002C2297 /* ReactiveCocoa.framework in Frameworks */,
+				D1F9C7CA1DD8BB9E002C2297 /* ISO8601DateFormatter.framework in Frameworks */,
 				D1F9C7C31DD8B010002C2297 /* OctoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +119,7 @@
 		D11128BD1DD8A9BB000DFF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1F9C7C91DD8BB9E002C2297 /* ISO8601DateFormatter.framework */,
 				D1F9C7C21DD8B010002C2297 /* OctoKit.framework */,
 				D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */,
 				D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */,
@@ -240,6 +244,7 @@
 				"$(SRCROOT)/Carthage/Build/iOS/Mantle.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/OctoKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ISO8601DateFormatter.framework",
 			);
 			outputPaths = (
 			);
