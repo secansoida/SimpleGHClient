@@ -32,6 +32,20 @@ class ViewController: UIViewController {
             }
         })
 
+        let usersRequest = client?.searchUsers(withQuery: "secansoida", orderBy: nil, ascending: false)
+
+        let _ = usersRequest?.deliverOnMainThread().subscribeNext({ (output) in
+            guard let usersResult  = output as? OCTUsersSearchResult else {
+                print("OUTPUT: \(output)")
+                return
+            }
+            print("users COUNT: \(usersResult.users.count)")
+        }, error: { (error) in
+            if let error = error {
+                print("ERROR \(error)")
+            }
+        })
+
     }
 
     override func didReceiveMemoryWarning() {
