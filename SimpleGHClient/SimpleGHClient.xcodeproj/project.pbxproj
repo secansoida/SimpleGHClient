@@ -13,6 +13,10 @@
 		D11128A51DD8A042000DFF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11128A41DD8A042000DFF78 /* Assets.xcassets */; };
 		D11128A81DD8A042000DFF78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11128A61DD8A042000DFF78 /* LaunchScreen.storyboard */; };
 		D11128B31DD8A043000DFF78 /* SimpleGHClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11128B21DD8A043000DFF78 /* SimpleGHClientTests.swift */; };
+		D11128BF1DD8A9BB000DFF78 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128BE1DD8A9BB000DFF78 /* AFNetworking.framework */; };
+		D11128C11DD8A9C3000DFF78 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C01DD8A9C3000DFF78 /* Mantle.framework */; };
+		D11128C31DD8A9C8000DFF78 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */; };
+		D11128C51DD8A9CD000DFF78 /* OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C41DD8A9CD000DFF78 /* OctoKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +40,10 @@
 		D11128AE1DD8A043000DFF78 /* SimpleGHClientTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SimpleGHClientTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D11128B21DD8A043000DFF78 /* SimpleGHClientTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleGHClientTests.swift; sourceTree = "<group>"; };
 		D11128B41DD8A043000DFF78 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D11128BE1DD8A9BB000DFF78 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = ../Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		D11128C01DD8A9C3000DFF78 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = ../Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
+		D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		D11128C41DD8A9CD000DFF78 /* OctoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OctoKit.framework; path = ../Carthage/Build/iOS/OctoKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +51,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D11128BF1DD8A9BB000DFF78 /* AFNetworking.framework in Frameworks */,
+				D11128C11DD8A9C3000DFF78 /* Mantle.framework in Frameworks */,
+				D11128C31DD8A9C8000DFF78 /* ReactiveCocoa.framework in Frameworks */,
+				D11128C51DD8A9CD000DFF78 /* OctoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -62,6 +74,7 @@
 				D111289C1DD8A042000DFF78 /* SimpleGHClient */,
 				D11128B11DD8A043000DFF78 /* SimpleGHClientTests */,
 				D111289B1DD8A042000DFF78 /* Products */,
+				D11128BD1DD8A9BB000DFF78 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -96,6 +109,17 @@
 			path = SimpleGHClientTests;
 			sourceTree = "<group>";
 		};
+		D11128BD1DD8A9BB000DFF78 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D11128C41DD8A9CD000DFF78 /* OctoKit.framework */,
+				D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */,
+				D11128C01DD8A9C3000DFF78 /* Mantle.framework */,
+				D11128BE1DD8A9BB000DFF78 /* AFNetworking.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -106,6 +130,7 @@
 				D11128961DD8A042000DFF78 /* Sources */,
 				D11128971DD8A042000DFF78 /* Frameworks */,
 				D11128981DD8A042000DFF78 /* Resources */,
+				D11128C71DD8AB29000DFF78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -195,6 +220,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		D11128C71DD8AB29000DFF78 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/AFNetworking.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Mantle.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/OctoKit.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D11128961DD8A042000DFF78 /* Sources */ = {
