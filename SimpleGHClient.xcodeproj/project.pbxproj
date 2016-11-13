@@ -13,10 +13,10 @@
 		D11128A51DD8A042000DFF78 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D11128A41DD8A042000DFF78 /* Assets.xcassets */; };
 		D11128A81DD8A042000DFF78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11128A61DD8A042000DFF78 /* LaunchScreen.storyboard */; };
 		D11128B31DD8A043000DFF78 /* SimpleGHClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11128B21DD8A043000DFF78 /* SimpleGHClientTests.swift */; };
-		D11128BF1DD8A9BB000DFF78 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128BE1DD8A9BB000DFF78 /* AFNetworking.framework */; };
-		D11128C11DD8A9C3000DFF78 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C01DD8A9C3000DFF78 /* Mantle.framework */; };
-		D11128C31DD8A9C8000DFF78 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */; };
-		D11128C51DD8A9CD000DFF78 /* OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D11128C41DD8A9CD000DFF78 /* OctoKit.framework */; };
+		D1F9C7BD1DD8B005002C2297 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7BC1DD8B005002C2297 /* AFNetworking.framework */; };
+		D1F9C7BF1DD8B00A002C2297 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */; };
+		D1F9C7C11DD8B00D002C2297 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */; };
+		D1F9C7C31DD8B010002C2297 /* OctoKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C21DD8B010002C2297 /* OctoKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,10 @@
 		D11128C01DD8A9C3000DFF78 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = ../Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 		D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D11128C41DD8A9CD000DFF78 /* OctoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OctoKit.framework; path = ../Carthage/Build/iOS/OctoKit.framework; sourceTree = "<group>"; };
+		D1F9C7BC1DD8B005002C2297 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
+		D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
+		D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
+		D1F9C7C21DD8B010002C2297 /* OctoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OctoKit.framework; path = Carthage/Build/iOS/OctoKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,10 +55,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D11128BF1DD8A9BB000DFF78 /* AFNetworking.framework in Frameworks */,
-				D11128C11DD8A9C3000DFF78 /* Mantle.framework in Frameworks */,
-				D11128C31DD8A9C8000DFF78 /* ReactiveCocoa.framework in Frameworks */,
-				D11128C51DD8A9CD000DFF78 /* OctoKit.framework in Frameworks */,
+				D1F9C7BD1DD8B005002C2297 /* AFNetworking.framework in Frameworks */,
+				D1F9C7BF1DD8B00A002C2297 /* Mantle.framework in Frameworks */,
+				D1F9C7C11DD8B00D002C2297 /* ReactiveCocoa.framework in Frameworks */,
+				D1F9C7C31DD8B010002C2297 /* OctoKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +116,10 @@
 		D11128BD1DD8A9BB000DFF78 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D1F9C7C21DD8B010002C2297 /* OctoKit.framework */,
+				D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */,
+				D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */,
+				D1F9C7BC1DD8B005002C2297 /* AFNetworking.framework */,
 				D11128C41DD8A9CD000DFF78 /* OctoKit.framework */,
 				D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */,
 				D11128C01DD8A9C3000DFF78 /* Mantle.framework */,
@@ -127,10 +135,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D11128B71DD8A043000DFF78 /* Build configuration list for PBXNativeTarget "SimpleGHClient" */;
 			buildPhases = (
+				D11128C71DD8AB29000DFF78 /* ShellScript */,
 				D11128961DD8A042000DFF78 /* Sources */,
 				D11128971DD8A042000DFF78 /* Frameworks */,
 				D11128981DD8A042000DFF78 /* Resources */,
-				D11128C71DD8AB29000DFF78 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -385,6 +393,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UA42A67M7X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SimpleGHClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secansoida.SimpleGHClient;
@@ -398,6 +410,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = UA42A67M7X;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = SimpleGHClient/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.secansoida.SimpleGHClient;
@@ -455,6 +471,7 @@
 				D11128B91DD8A043000DFF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D11128BA1DD8A043000DFF78 /* Build configuration list for PBXNativeTarget "SimpleGHClientTests" */ = {
 			isa = XCConfigurationList;
@@ -463,6 +480,7 @@
 				D11128BC1DD8A043000DFF78 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
