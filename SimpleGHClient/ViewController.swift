@@ -24,9 +24,22 @@ class ViewController: UIViewController {
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource
 
+        self.definesPresentationContext = true
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
         self.tableView.tableHeaderView = searchController.searchBar
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.setNavigationBarHidden(true, animated: animated)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let repositoryViewController = segue.destination as? UserViewController {
+            repositoryViewController.title = "Onion!"
+        }
     }
 
 }
@@ -51,6 +64,8 @@ extension ViewController : UISearchResultsUpdating {
                 self.dataSource.objects = objects
                 self.tableView.reloadData()
             } else {
+                self.dataSource.objects = []
+                self.tableView.reloadData()
                 print("Error searching for users and repos: \(error)")
             }
         }
