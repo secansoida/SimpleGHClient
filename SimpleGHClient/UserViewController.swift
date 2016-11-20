@@ -15,6 +15,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
+    @IBOutlet weak var starsCountLabel: UILabel!
 
     public var userObject : OCTUser?
 
@@ -27,6 +28,7 @@ class UserViewController: UIViewController {
             self.usernameLabel.text = user.name
 
             self.followersCountLabel.text = "\(user.followers)"
+
         }
 
         // TODO: display username, avatar, number of stars, number of followers
@@ -43,6 +45,7 @@ class UserViewController: UIViewController {
         super.viewDidLayoutSubviews()
 
         self.followersCountLabel.layer.cornerRadius = self.followersCountLabel.frame.height / 2
+        self.starsCountLabel.layer.cornerRadius = self.starsCountLabel.frame.height / 2
     }
 
 }
