@@ -7,11 +7,17 @@
 //
 
 import UIKit
+import OctoKit
 
 class UserViewController: UIViewController {
 
+    public var userObject : OCTUser?
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // TODO: display username, avatar, number of stars, number of followers
+        // OCTClient -> fetchStarredRepositoriesForUser
 
     }
 

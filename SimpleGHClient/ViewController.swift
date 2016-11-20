@@ -37,14 +37,17 @@ class ViewController: UIViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let repositoryViewController = segue.destination as? UserViewController {
-            repositoryViewController.title = "Onion!"
+        if let userViewController = segue.destination as? UserViewController,
+            let cell = sender as? UITableViewCell,
+            let indexPath = self.tableView.indexPath(for: cell) {
+            userViewController.userObject = self.dataSource.userObject(atIndexPath: indexPath)
         }
     }
 
 }
 
 extension ViewController : UISearchResultsUpdating {
+
     func updateSearchResults(for searchController: UISearchController) {
         guard let keyword = searchController.searchBar.text, keyword.characters.count > 0 else {
             self.dataSource.objects = []
