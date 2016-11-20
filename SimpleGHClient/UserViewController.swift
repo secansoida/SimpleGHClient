@@ -39,4 +39,10 @@ class UserViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+
+        self.followersCountLabel.layer.cornerRadius = self.followersCountLabel.frame.height / 2
+    }
+
 }
