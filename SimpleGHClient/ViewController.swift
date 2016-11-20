@@ -13,15 +13,39 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let dataSource = ReposAndUsersTableViewDataSourceDelegate()
-    private let networkingManager = NetworkingManager()
+    private let searchController = UISearchController(searchResultsController: nil)
+
+    let dataSource = ReposAndUsersTableViewDataSourceDelegate()
+    let networkingManager = NetworkingManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource
-        self.networkingManager.searchForUsersAndRepositories(keyword: "delphi") {
+
+        self.searchController.searchResultsUpdater = self
+        self.searchController.dimsBackgroundDuringPresentation = false
+        self.tableView.tableHeaderView = searchController.searchBar
+    }
+
+}
+
+extension ViewController : UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        guard let keyword = searchController.searchBar.text, keyword.characters.count > 0 else {
+            self.dataSource.objects = []
+            self.tableView.reloadData()
+            return
+        }
+
+        NSObject.cancelPreviousPerformRequests(withTarget: self)
+
+        self.perform(#selector(self.performRemoteSearch(keyword:)), with: keyword, afterDelay: 0.4)
+    }
+
+    @objc private func performRemoteSearch(keyword : String) {
+        self.networkingManager.searchForUsersAndRepositories(keyword: keyword) {
             objects, error in
             if let objects = objects {
                 self.dataSource.objects = objects
@@ -31,5 +55,4 @@ class ViewController: UIViewController {
             }
         }
     }
-
 }
