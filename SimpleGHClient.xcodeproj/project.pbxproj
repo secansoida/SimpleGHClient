@@ -14,6 +14,7 @@
 		D11128A81DD8A042000DFF78 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D11128A61DD8A042000DFF78 /* LaunchScreen.storyboard */; };
 		D11128B31DD8A043000DFF78 /* SimpleGHClientTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D11128B21DD8A043000DFF78 /* SimpleGHClientTests.swift */; };
 		D18306C51DE1F6ED005A0579 /* ReposAndUsersTableViewDataSourceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18306C41DE1F6ED005A0579 /* ReposAndUsersTableViewDataSourceDelegate.swift */; };
+		D18306C81DE20021005A0579 /* NetworkingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D18306C71DE20021005A0579 /* NetworkingManager.swift */; };
 		D1F9C7BD1DD8B005002C2297 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7BC1DD8B005002C2297 /* AFNetworking.framework */; };
 		D1F9C7BF1DD8B00A002C2297 /* Mantle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */; };
 		D1F9C7C11DD8B00D002C2297 /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */; };
@@ -47,6 +48,7 @@
 		D11128C21DD8A9C8000DFF78 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = ../Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
 		D11128C41DD8A9CD000DFF78 /* OctoKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OctoKit.framework; path = ../Carthage/Build/iOS/OctoKit.framework; sourceTree = "<group>"; };
 		D18306C41DE1F6ED005A0579 /* ReposAndUsersTableViewDataSourceDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReposAndUsersTableViewDataSourceDelegate.swift; sourceTree = "<group>"; };
+		D18306C71DE20021005A0579 /* NetworkingManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkingManager.swift; sourceTree = "<group>"; };
 		D1F9C7BC1DD8B005002C2297 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = Carthage/Build/iOS/AFNetworking.framework; sourceTree = "<group>"; };
 		D1F9C7BE1DD8B00A002C2297 /* Mantle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Mantle.framework; path = Carthage/Build/iOS/Mantle.framework; sourceTree = "<group>"; };
 		D1F9C7C01DD8B00D002C2297 /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ReactiveCocoa.framework; path = Carthage/Build/iOS/ReactiveCocoa.framework; sourceTree = "<group>"; };
@@ -101,6 +103,7 @@
 			children = (
 				D111289D1DD8A042000DFF78 /* AppDelegate.swift */,
 				D111289F1DD8A042000DFF78 /* ViewController.swift */,
+				D18306C71DE20021005A0579 /* NetworkingManager.swift */,
 				D18306C41DE1F6ED005A0579 /* ReposAndUsersTableViewDataSourceDelegate.swift */,
 				D11128A11DD8A042000DFF78 /* Main.storyboard */,
 				D11128A41DD8A042000DFF78 /* Assets.xcassets */,
@@ -263,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D11128A01DD8A042000DFF78 /* ViewController.swift in Sources */,
+				D18306C81DE20021005A0579 /* NetworkingManager.swift in Sources */,
 				D111289E1DD8A042000DFF78 /* AppDelegate.swift in Sources */,
 				D18306C51DE1F6ED005A0579 /* ReposAndUsersTableViewDataSourceDelegate.swift in Sources */,
 			);
