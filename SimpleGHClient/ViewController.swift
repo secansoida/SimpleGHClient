@@ -19,9 +19,6 @@ class ViewController: UIViewController {
 
     private let client = OCTClient(server: OCTServer(baseURL: URL(string: githubAPIURL)))
 
-    private var searchedRepositories : [OCTRepository] = []
-    private var searchedUsers : [OCTUser] = []
-
     var searchedObjects : [OCTObject] = [] {
         didSet {
             self.tableView.reloadData()
@@ -33,54 +30,37 @@ class ViewController: UIViewController {
 
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        self.searchForUsersAndRepositories(keyword: "Delphi")
+        self.searchForUsersAndRepositories(keyword: "delphi")
     }
 
     private func searchForUsersAndRepositories(keyword: String) {
 
         let reposRequest = self.client?.searchRepositories(withQuery: keyword, orderBy: nil, ascending: false)
 
-        let _ = reposRequest?.deliverOnMainThread().subscribeNext({ [weak self] (output) in
-            guard let searchResult = output as? OCTRepositoriesSearchResult else {
-                print("Invalid type of repository search output: \(output)")
+        let usersRequest = self.client?.searchUsers(withQuery: keyword, orderBy: nil, ascending: false)
+
+        RACSignal.combineLatest([reposRequest, usersRequest] as NSFastEnumeration).deliverOnMainThread().subscribeNext({ (returnVal) in
+            guard let dataTuple = returnVal as? RACTuple else {
+                print("Error: invalid return type \(returnVal)")
                 return
             }
-            if let repos = searchResult.repositories as? [OCTRepository] {
-                self?.searchedRepositories = repos
-                self?.resetSearchedObjects()
+            guard let reposSearchResult = dataTuple.first as? OCTRepositoriesSearchResult,
+                let repos = reposSearchResult.repositories as? [OCTRepository] else {
+                    print("Error: invalid repos return type \(dataTuple.first)")
+                    return
             }
-
-        }, error: { (error) in
-            if let error = error {
-                print("Error while fetching repositories: \(error)")
+            guard let usersSearchResult = dataTuple.second as? OCTUsersSearchResult,
+                let users = usersSearchResult.users as? [OCTUser] else {
+                    print("Error: invalid users return type \(dataTuple.second)")
+                    return
             }
-        })
-
-        let usersRequest = client?.searchUsers(withQuery: keyword, orderBy: nil, ascending: false)
-
-        let _ = usersRequest?.deliverOnMainThread().subscribeNext({ [weak self] (output) in
-            guard let searchResult = output as? OCTUsersSearchResult else {
-                print("Invalid type of user search output: \(output)")
-                return
-            }
-            if let users = searchResult.users as? [OCTUser] {
-                self?.searchedUsers = users
-                self?.resetSearchedObjects()
-            }
-        }, error: { (error) in
-            if let error = error {
-                print("Error while fetching users: \(error)")
-            }
+            let userObjects : [OCTObject] = users
+            let repositoryObjects : [OCTObject] = repos
+            self.searchedObjects = (repositoryObjects + userObjects).sorted(by: { $0.objectID < $1.objectID })
+        }, error: {
+            print("Error: \($0)")
         })
     }
-
-    private func resetSearchedObjects() {
-        let searchedUsers : [OCTObject] = self.searchedUsers
-        let searchedRepositories : [OCTObject] = self.searchedRepositories
-        self.searchedObjects = (searchedUsers + searchedRepositories).sorted(by: { $0.objectID < $1.objectID })
-    }
-
-
 }
 
 extension ViewController : UITableViewDelegate {
