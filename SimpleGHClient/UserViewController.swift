@@ -8,13 +8,21 @@
 
 import UIKit
 import OctoKit
+import AFNetworking
 
 class UserViewController: UIViewController {
+
+    @IBOutlet weak var avatarImageView: UIImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
 
     public var userObject : OCTUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.avatarImageView.setImageWith(self.userObject?.avatarURL)
+
+        self.usernameLabel.text = self.userObject?.name
 
         // TODO: display username, avatar, number of stars, number of followers
         // OCTClient -> fetchStarredRepositoriesForUser

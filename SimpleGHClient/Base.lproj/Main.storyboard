@@ -6,6 +6,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -75,12 +77,53 @@
                     <view key="view" contentMode="scaleToFill" id="Pbz-BR-4Qy">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kRa-vp-eQU">
+                                <rect key="frame" x="74.5" y="138.5" width="225" height="225"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="kRa-vp-eQU" secondAttribute="height" multiplier="1:1" id="AvK-Vf-zHJ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
+                            <view hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nsq-Zb-bLJ">
+                                <rect key="frame" x="0.0" y="64" width="74.5" height="74.5"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="nsq-Zb-bLJ" secondAttribute="height" multiplier="1:1" id="QIh-K2-98L"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mKh-GJ-aPR">
+                                <rect key="frame" x="74.5" y="379.5" width="225" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="kRa-vp-eQU" firstAttribute="leading" secondItem="nsq-Zb-bLJ" secondAttribute="trailing" id="8Rb-8C-Gr1"/>
+                            <constraint firstItem="nsq-Zb-bLJ" firstAttribute="top" secondItem="2WD-Lz-s9T" secondAttribute="bottom" id="9dP-Pf-eij"/>
+                            <constraint firstItem="mKh-GJ-aPR" firstAttribute="leading" secondItem="kRa-vp-eQU" secondAttribute="leading" id="Sz9-ea-6qs"/>
+                            <constraint firstItem="kRa-vp-eQU" firstAttribute="centerX" secondItem="Pbz-BR-4Qy" secondAttribute="centerX" id="YpP-I5-MBD"/>
+                            <constraint firstItem="mKh-GJ-aPR" firstAttribute="trailing" secondItem="kRa-vp-eQU" secondAttribute="trailing" id="bUN-yq-D93"/>
+                            <constraint firstItem="kRa-vp-eQU" firstAttribute="top" secondItem="nsq-Zb-bLJ" secondAttribute="bottom" id="brF-gj-UTJ"/>
+                            <constraint firstItem="nsq-Zb-bLJ" firstAttribute="leading" secondItem="Pbz-BR-4Qy" secondAttribute="leading" id="dYr-Ee-aCt"/>
+                            <constraint firstItem="kRa-vp-eQU" firstAttribute="width" secondItem="Pbz-BR-4Qy" secondAttribute="width" multiplier="0.6" id="gpx-zW-tHw"/>
+                            <constraint firstItem="mKh-GJ-aPR" firstAttribute="top" secondItem="kRa-vp-eQU" secondAttribute="bottom" constant="16" id="uov-Db-kVL"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="avatarImageView" destination="kRa-vp-eQU" id="O6p-9Z-llV"/>
+                        <outlet property="usernameLabel" destination="mKh-GJ-aPR" id="pcU-Ip-EXv"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XDC-u7-fe5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2092" y="128"/>
+            <point key="canvasLocation" x="2092" y="127.28635682158921"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8OH-tp-XpR">
