@@ -10,8 +10,6 @@ import UIKit
 import OctoKit
 
 private let githubAPIURL = "https://api.github.com/v3"
-private let repoCellReuseID = "RepoCellReuseID"
-private let userCellReuseID = "UserCellReuseID"
 
 class ViewController: UIViewController {
 
@@ -19,17 +17,13 @@ class ViewController: UIViewController {
 
     private let client = OCTClient(server: OCTServer(baseURL: URL(string: githubAPIURL)))
 
-    var searchedObjects : [OCTObject] = [] {
-        didSet {
-            self.tableView.reloadData()
-        }
-    }
+    private let dataSource = ReposAndUsersTableViewDataSourceDelegate()
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tableView.delegate = self
-        self.tableView.dataSource = self
+        self.tableView.delegate = self.dataSource
+        self.tableView.dataSource = self.dataSource
         self.searchForUsersAndRepositories(keyword: "delphi")
     }
 
@@ -56,34 +50,10 @@ class ViewController: UIViewController {
             }
             let userObjects : [OCTObject] = users
             let repositoryObjects : [OCTObject] = repos
-            self.searchedObjects = (repositoryObjects + userObjects).sorted(by: { $0.objectID < $1.objectID })
+            self.dataSource.objects = (repositoryObjects + userObjects).sorted(by: { $0.objectID < $1.objectID })
+            self.tableView.reloadData()
         }, error: {
             print("Error: \($0)")
         })
-    }
-}
-
-extension ViewController : UITableViewDelegate {
-}
-
-extension ViewController : UITableViewDataSource {
-
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.searchedObjects.count
-    }
-
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let object = self.searchedObjects[indexPath.row]
-        if let user = object as? OCTUser {
-            let cell = tableView.dequeueReusableCell(withIdentifier: userCellReuseID, for: indexPath)
-            cell.textLabel?.text = "User: \(user.name)"
-            return cell
-        }
-        if let repo = object as? OCTRepository {
-            let cell = tableView.dequeueReusableCell(withIdentifier: repoCellReuseID, for: indexPath)
-            cell.textLabel?.text = "Repo: \(repo.name)"
-            return cell
-        }
-        preconditionFailure("Unknown object type")
     }
 }
