@@ -102,22 +102,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Followers " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J8s-Uz-FyW">
+                                <rect key="frame" x="74.5" y="409.5" width="69" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.46274509803921571" green="0.46274509803921571" blue="0.46274509803921571" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yz5-IX-h3h">
+                                <rect key="frame" x="143.5" y="411.5" width="8" height="14.5"/>
+                                <color key="backgroundColor" red="0.93333333333333335" green="0.93333333333333335" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="12"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Yz5-IX-h3h" firstAttribute="leading" secondItem="J8s-Uz-FyW" secondAttribute="trailing" id="3GC-A8-11e"/>
                             <constraint firstItem="kRa-vp-eQU" firstAttribute="leading" secondItem="nsq-Zb-bLJ" secondAttribute="trailing" id="8Rb-8C-Gr1"/>
                             <constraint firstItem="nsq-Zb-bLJ" firstAttribute="top" secondItem="2WD-Lz-s9T" secondAttribute="bottom" id="9dP-Pf-eij"/>
                             <constraint firstItem="mKh-GJ-aPR" firstAttribute="leading" secondItem="kRa-vp-eQU" secondAttribute="leading" id="Sz9-ea-6qs"/>
+                            <constraint firstItem="J8s-Uz-FyW" firstAttribute="top" secondItem="mKh-GJ-aPR" secondAttribute="bottom" constant="30" id="T1r-0L-ebv"/>
                             <constraint firstItem="kRa-vp-eQU" firstAttribute="centerX" secondItem="Pbz-BR-4Qy" secondAttribute="centerX" id="YpP-I5-MBD"/>
                             <constraint firstItem="mKh-GJ-aPR" firstAttribute="trailing" secondItem="kRa-vp-eQU" secondAttribute="trailing" id="bUN-yq-D93"/>
                             <constraint firstItem="kRa-vp-eQU" firstAttribute="top" secondItem="nsq-Zb-bLJ" secondAttribute="bottom" id="brF-gj-UTJ"/>
+                            <constraint firstItem="Yz5-IX-h3h" firstAttribute="centerY" secondItem="J8s-Uz-FyW" secondAttribute="centerY" id="cVj-4r-C48"/>
                             <constraint firstItem="nsq-Zb-bLJ" firstAttribute="leading" secondItem="Pbz-BR-4Qy" secondAttribute="leading" id="dYr-Ee-aCt"/>
                             <constraint firstItem="kRa-vp-eQU" firstAttribute="width" secondItem="Pbz-BR-4Qy" secondAttribute="width" multiplier="0.6" id="gpx-zW-tHw"/>
+                            <constraint firstItem="J8s-Uz-FyW" firstAttribute="leading" secondItem="mKh-GJ-aPR" secondAttribute="leading" id="hmn-Ph-6vX"/>
                             <constraint firstItem="mKh-GJ-aPR" firstAttribute="top" secondItem="kRa-vp-eQU" secondAttribute="bottom" constant="16" id="uov-Db-kVL"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="avatarImageView" destination="kRa-vp-eQU" id="O6p-9Z-llV"/>
+                        <outlet property="followersCountLabel" destination="Yz5-IX-h3h" id="Y3N-kA-2tl"/>
                         <outlet property="usernameLabel" destination="mKh-GJ-aPR" id="pcU-Ip-EXv"/>
                     </connections>
                 </viewController>

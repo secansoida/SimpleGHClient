@@ -14,15 +14,20 @@ class UserViewController: UIViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var followersCountLabel: UILabel!
 
     public var userObject : OCTUser?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.avatarImageView.setImageWith(self.userObject?.avatarURL)
+        if let user = self.userObject {
+            self.avatarImageView.setImageWith(user.avatarURL)
 
-        self.usernameLabel.text = self.userObject?.name
+            self.usernameLabel.text = user.name
+
+            self.followersCountLabel.text = "\(user.followers)"
+        }
 
         // TODO: display username, avatar, number of stars, number of followers
         // OCTClient -> fetchStarredRepositoriesForUser
