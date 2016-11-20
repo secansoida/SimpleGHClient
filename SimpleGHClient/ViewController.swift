@@ -41,7 +41,7 @@ extension ViewController : UISearchResultsUpdating {
 
         NSObject.cancelPreviousPerformRequests(withTarget: self)
 
-        self.perform(#selector(self.performRemoteSearch(keyword:)), with: keyword, afterDelay: 0.4)
+        self.perform(#selector(self.performRemoteSearch(keyword:)), with: keyword, afterDelay: 1.5)
     }
 
     @objc private func performRemoteSearch(keyword : String) {
