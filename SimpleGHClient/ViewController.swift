@@ -25,8 +25,10 @@ class ViewController: UIViewController {
         self.tableView.dataSource = self.dataSource
 
         self.definesPresentationContext = true
+
         self.searchController.searchResultsUpdater = self
         self.searchController.dimsBackgroundDuringPresentation = false
+
         self.tableView.tableHeaderView = searchController.searchBar
     }
 

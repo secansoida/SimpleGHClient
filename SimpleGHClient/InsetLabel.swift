@@ -50,10 +50,13 @@ class InsetLabel: UILabel {
 
         let horizontalInsets = self.edgeInsets.left + self.edgeInsets.right;
         let verticalInsets =  self.edgeInsets.top + self.edgeInsets.bottom;
+
         var insetSize = size;
         insetSize.width = max(0, size.width - horizontalInsets)
         insetSize.height = max(0, size.height - verticalInsets)
+
         let baseSize = super.sizeThatFits(insetSize)
+
         return CGSize(width: baseSize.width + horizontalInsets,
                       height: baseSize.height + verticalInsets)
     }
