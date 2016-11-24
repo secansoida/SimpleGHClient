@@ -17,19 +17,18 @@ class UserViewController: UIViewController {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var starsCountLabel: UILabel!
 
-    public var userObject : OCTUser?
+    public var userObject : OCTUser? {
+        didSet {
+            if self.isViewLoaded {
+                self.setupWithUser()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        if let user = self.userObject {
-            self.avatarImageView.setImageWith(user.avatarURL)
-
-            self.usernameLabel.text = user.name
-
-            self.followersCountLabel.text = "\(user.followers)"
-
-        }
+        self.setupWithUser()
 
         // TODO: display username, avatar, number of stars, number of followers
         // OCTClient -> fetchStarredRepositoriesForUser
@@ -41,6 +40,16 @@ class UserViewController: UIViewController {
 
         self.followersCountLabel.layer.cornerRadius = self.followersCountLabel.frame.height / 2
         self.starsCountLabel.layer.cornerRadius = self.starsCountLabel.frame.height / 2
+    }
+
+    private func setupWithUser() {
+        if let user = self.userObject {
+            self.avatarImageView.setImageWith(user.avatarURL)
+
+            self.usernameLabel.text = user.name
+
+            self.followersCountLabel.text = "\(user.followers)"
+        }
     }
 
 }
