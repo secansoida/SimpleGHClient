@@ -55,6 +55,7 @@ extension ViewController : UISearchResultsUpdating {
             return
         }
 
+        // The code below limits calls to API - sends request only after user stops typing
         NSObject.cancelPreviousPerformRequests(withTarget: self)
 
         self.perform(#selector(self.performRemoteSearch(keyword:)), with: keyword, afterDelay: 1.5)
