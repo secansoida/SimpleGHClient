@@ -36,6 +36,12 @@ class ViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(true, animated: animated)
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+
+        self.navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let userViewController = segue.destination as? UserViewController,
             let cell = sender as? UITableViewCell,
