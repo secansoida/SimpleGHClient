@@ -14,9 +14,9 @@ private let userCellReuseID = "UserCellReuseID"
 
 // TODO: think of some better name...
 class ReposAndUsersTableViewDataSourceDelegate: NSObject {
-    public var objects : [OCTObject] = []
+    var objects : [OCTObject] = []
 
-    public func userObject(atIndexPath indexPath: IndexPath) -> OCTUser? {
+    func userObject(atIndexPath indexPath: IndexPath) -> OCTUser? {
         if indexPath.row < self.objects.count {
             if let user = self.objects[indexPath.row] as? OCTUser {
                 return user

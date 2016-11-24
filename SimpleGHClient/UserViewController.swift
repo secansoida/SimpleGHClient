@@ -17,7 +17,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var starsCountLabel: UILabel!
 
-    public var userObject : OCTUser? {
+    var userObject : OCTUser? {
         didSet {
             if self.isViewLoaded {
                 self.setupWithUser()

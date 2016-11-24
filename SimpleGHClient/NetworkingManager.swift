@@ -25,7 +25,7 @@ class NetworkingManager {
 
     private let client = OCTClient(server: OCTServer(baseURL: URL(string: githubAPIURL)))
 
-    public func searchForUsersAndRepositories(keyword: String, completion : ((Result<[OCTObject]>) -> Void)?) {
+    func searchForUsersAndRepositories(keyword: String, completion : ((Result<[OCTObject]>) -> Void)?) {
 
         let reposRequest = self.client?.searchRepositories(withQuery: keyword, orderBy: nil, ascending: false)
 
