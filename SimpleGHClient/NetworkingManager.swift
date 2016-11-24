@@ -25,16 +25,14 @@ class NetworkingManager {
 
     private let client = OCTClient(server: OCTServer(baseURL: URL(string: githubAPIURL)))
 
-    func searchForUsersAndRepositories(keyword: String, completion : ((Result<[OCTObject]>) -> Void)?) {
+    func searchForUsersAndRepositories(keyword: String, completion: @escaping (Result<[OCTObject]>) -> Void) {
 
         let reposRequest = self.client?.searchRepositories(withQuery: keyword, orderBy: nil, ascending: false)
 
         let usersRequest = self.client?.searchUsers(withQuery: keyword, orderBy: nil, ascending: false)
 
         RACSignal.combineLatest([reposRequest, usersRequest] as NSFastEnumeration).deliverOnMainThread().subscribeNext({ (returnVal) in
-            guard let completion = completion else {
-                return
-            }
+
             guard let dataTuple = returnVal as? RACTuple else {
                 completion(.error(.invalidReturnType("Expected RACTuple; Got: \(returnVal)")))
                 return
@@ -55,10 +53,22 @@ class NetworkingManager {
             let objects = (repositoryObjects + userObjects).sorted(by: { $0.objectID < $1.objectID })
             completion(.data(objects))
         }, error: {
-            if let completion = completion {
-                completion(.error(.internalError($0)))
-            }
+            completion(.error(.internalError($0)))
         })
     }
 
+    func fetchUserData(forUser user: OCTUser, completion: @escaping (Result<OCTUser>) -> Void) {
+
+        let userRequest = self.client?.fetchUserInfo(for: user)
+
+        let _ = userRequest?.deliverOnMainThread().subscribeNext({ (returnVal) in
+            guard let user = returnVal as? OCTUser else {
+                completion(.error(.invalidReturnType("Expected OCTUser; Got: \(returnVal)")))
+                return
+            }
+            completion(.data(user))
+        }, error: {
+            completion(.error(.internalError($0)))
+        })
+    }
 }

@@ -49,6 +49,7 @@ class ViewController: UIViewController {
             let cell = sender as? UITableViewCell,
             let indexPath = self.tableView.indexPath(for: cell) {
             userViewController.userObject = self.dataSource.userObject(atIndexPath: indexPath)
+            userViewController.networkingManager = self.networkingManager
         }
     }
 

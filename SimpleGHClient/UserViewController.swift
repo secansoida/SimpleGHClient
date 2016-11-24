@@ -25,10 +25,20 @@ class UserViewController: UIViewController {
         }
     }
 
+    var networkingManager : NetworkingManager? {
+        didSet {
+            if self.isViewLoaded {
+                self.fetchUserData()
+            }
+        }
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         self.setupWithUser()
+
+        self.fetchUserData()
 
         // TODO: display username, avatar, number of stars, number of followers
         // OCTClient -> fetchStarredRepositoriesForUser
@@ -50,6 +60,20 @@ class UserViewController: UIViewController {
 
             self.followersCountLabel.text = "\(user.followers)"
         }
+    }
+
+    private func fetchUserData() {
+        guard let user = self.userObject else {
+            return;
+        }
+        self.networkingManager?.fetchUserData(forUser: user, completion: { [weak self] (result) in
+            switch result {
+            case .data(let user):
+                self?.userObject = user
+            case .error(let error):
+                print("Error fetching user data: \(error)")
+            }
+        })
     }
 
 }
