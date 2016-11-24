@@ -11,15 +11,21 @@ import OctoKit
 
 private let githubAPIURL = "https://api.github.com/v3"
 
-public enum NetworkError : Error {
+enum NetworkError : Error {
     case invalidReturnType(String)
+    case internalError(Error?)
+}
+
+enum Result<T> {
+    case data(T)
+    case error(NetworkError)
 }
 
 class NetworkingManager {
 
     private let client = OCTClient(server: OCTServer(baseURL: URL(string: githubAPIURL)))
 
-    public func searchForUsersAndRepositories(keyword: String, completion : (([OCTObject]?, Error?) -> Void)?) {
+    public func searchForUsersAndRepositories(keyword: String, completion : ((Result<[OCTObject]>) -> Void)?) {
 
         let reposRequest = self.client?.searchRepositories(withQuery: keyword, orderBy: nil, ascending: false)
 
@@ -30,27 +36,27 @@ class NetworkingManager {
                 return
             }
             guard let dataTuple = returnVal as? RACTuple else {
-                completion(nil, NetworkError.invalidReturnType("Expected RACTuple; Got: \(returnVal)"))
+                completion(.error(.invalidReturnType("Expected RACTuple; Got: \(returnVal)")))
                 return
             }
             guard let reposSearchResult = dataTuple.first as? OCTRepositoriesSearchResult,
                 let repos = reposSearchResult.repositories as? [OCTRepository] else {
-                    completion(nil, NetworkError.invalidReturnType("Expected OCTRepositoriesSearchResult; Got: \(dataTuple.first)"))
+                    completion(.error(.invalidReturnType("Expected OCTRepositoriesSearchResult; Got: \(dataTuple.first)")))
                     return
             }
             guard let usersSearchResult = dataTuple.second as? OCTUsersSearchResult,
                 let users = usersSearchResult.users as? [OCTUser] else {
-                    completion(nil, NetworkError.invalidReturnType("Expected OCTUsersSearchResult; Got: \(dataTuple.second)"))
+                    completion(.error(.invalidReturnType("Expected OCTUsersSearchResult; Got: \(dataTuple.second)")))
                     return
             }
             let userObjects : [OCTObject] = users
             let repositoryObjects : [OCTObject] = repos
 
             let objects = (repositoryObjects + userObjects).sorted(by: { $0.objectID < $1.objectID })
-            completion(objects, nil)
+            completion(.data(objects))
         }, error: {
             if let completion = completion {
-                completion(nil, $0)
+                completion(.error(.internalError($0)))
             }
         })
     }

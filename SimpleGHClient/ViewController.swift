@@ -69,11 +69,12 @@ extension ViewController : UISearchResultsUpdating {
 
     @objc private func performRemoteSearch(keyword : String) {
         self.networkingManager.searchForUsersAndRepositories(keyword: keyword) {
-            objects, error in
-            if let objects = objects {
+            result in
+            switch result {
+            case .data(let objects):
                 self.dataSource.objects = objects
                 self.tableView.reloadData()
-            } else {
+            case .error(let error):
                 self.dataSource.objects = []
                 self.tableView.reloadData()
                 print("Error searching for users and repos: \(error)")
