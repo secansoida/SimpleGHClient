@@ -42,12 +42,14 @@ extension ReposAndUsersTableViewDataSourceDelegate : UITableViewDataSource {
         let object = self.objects[indexPath.row]
         if let user = object as? OCTUser {
             let cell = tableView.dequeueReusableCell(withIdentifier: userCellReuseID, for: indexPath)
-            cell.textLabel?.text = "User: \(user.name)"
+            let name = user.name ?? "unknown"
+            cell.textLabel?.text = "User: \(name)"
             return cell
         }
         if let repo = object as? OCTRepository {
             let cell = tableView.dequeueReusableCell(withIdentifier: repoCellReuseID, for: indexPath)
-            cell.textLabel?.text = "Repo: \(repo.name)"
+            let name = repo.name ?? "unknown"
+            cell.textLabel?.text = "Repository: \(name)"
             return cell
         }
         preconditionFailure("Unknown object type")
