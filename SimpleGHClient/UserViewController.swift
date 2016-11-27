@@ -74,6 +74,15 @@ class UserViewController: UIViewController {
                 print("Error fetching user data: \(error)")
             }
         })
+
+        self.networkingManager?.fetchNumberOfUserStarredRepositories(forUser: user) { [weak self] (result) in
+            switch result {
+            case .data(let numberOfStarredRepos):
+                self?.starsCountLabel.text = "\(numberOfStarredRepos)"
+            case .error(let error):
+                print("Error fetching user data: \(error)")
+            }
+        }
     }
 
 }
