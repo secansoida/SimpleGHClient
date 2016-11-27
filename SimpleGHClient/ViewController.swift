@@ -24,6 +24,8 @@ class ViewController: UIViewController {
         self.tableView.delegate = self.dataSource
         self.tableView.dataSource = self.dataSource
 
+        self.tableView.keyboardDismissMode = .onDrag
+
         self.definesPresentationContext = true
 
         self.searchController.searchResultsUpdater = self
