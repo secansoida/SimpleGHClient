@@ -71,4 +71,18 @@ class NetworkingManager {
             completion(.error(.internalError($0)))
         })
     }
+
+    func fetchNumberOfUserStarredRepositories(forUser user: OCTUser, completion: @escaping (Result<Int>) -> Void) {
+        let starredReposRequest = self.client?.fetchNumberOfStarredRepositories(for: user)
+
+        let _ = starredReposRequest?.deliverOnMainThread().subscribeNext({ (returnVal) in
+            guard let numberOfStarredRepos = returnVal as? NSNumber else {
+                completion(.error(.invalidReturnType("Expected NSNumber; Got: \(returnVal)")))
+                return
+            }
+            completion(.data(numberOfStarredRepos.intValue))
+        }, error: {
+            completion(.error(.internalError($0)))
+        })
+    }
 }
