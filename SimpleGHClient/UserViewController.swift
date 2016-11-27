@@ -39,10 +39,6 @@ class UserViewController: UIViewController {
         self.setupWithUser()
 
         self.fetchUserData()
-
-        // TODO: display username, avatar, number of stars, number of followers
-        // OCTClient -> fetchStarredRepositoriesForUser
-
     }
 
     override func viewDidLayoutSubviews() {
