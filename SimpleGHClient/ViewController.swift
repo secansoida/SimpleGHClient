@@ -13,7 +13,7 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
 
-    private let searchController = UISearchController(searchResultsController: nil)
+    let searchController = UISearchController(searchResultsController: nil)
 
     let dataSource = ReposAndUsersTableViewDataSourceDelegate()
     let networkingManager = NetworkingManager()
@@ -73,6 +73,9 @@ extension ViewController : UISearchResultsUpdating {
     @objc private func performRemoteSearch(keyword : String) {
         self.networkingManager.searchForUsersAndRepositories(keyword: keyword) {
             result in
+            if self.searchController.searchBar.text?.compare(keyword) != .orderedSame {
+                return
+            }
             switch result {
             case .data(let objects):
                 self.dataSource.objects = objects
