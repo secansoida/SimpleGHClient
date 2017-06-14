@@ -16,6 +16,7 @@ class UserViewController: UIViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var followersCountLabel: UILabel!
     @IBOutlet weak var starsCountLabel: UILabel!
+    @IBOutlet weak var favouriteButton: UIButton!
 
     var userObject : OCTUser? {
         didSet {
@@ -55,6 +56,16 @@ class UserViewController: UIViewController {
             self.usernameLabel.text = user.name
 
             self.followersCountLabel.text = "\(user.followers)"
+
+            var favouriteButtonTitle : String
+
+            if UserDefaults.standard.isUserFavourite(user: user) {
+                favouriteButtonTitle = "Remove from favourites"
+            } else {
+                favouriteButtonTitle = "Add to favourites"
+            }
+            self.favouriteButton.setTitle(favouriteButtonTitle, for: .normal)
+            self.favouriteButton.isHidden = false
         }
     }
 
