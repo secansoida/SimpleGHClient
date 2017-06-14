@@ -34,7 +34,7 @@ class NetworkingManager {
         RACSignal.combineLatest([reposRequest, usersRequest] as NSFastEnumeration).deliverOnMainThread().subscribeNext({ (returnVal) in
 
             guard let dataTuple = returnVal as? RACTuple else {
-                completion(.error(.invalidReturnType("Expected RACTuple; Got: \(returnVal)")))
+                completion(.error(.invalidReturnType("Expected RACTuple; Got: \(returnVal ?? "nil")")))
                 return
             }
             guard let reposSearchResult = dataTuple.first as? OCTRepositoriesSearchResult,
@@ -63,7 +63,7 @@ class NetworkingManager {
 
         let _ = userRequest?.deliverOnMainThread().subscribeNext({ (returnVal) in
             guard let user = returnVal as? OCTUser else {
-                completion(.error(.invalidReturnType("Expected OCTUser; Got: \(returnVal)")))
+                completion(.error(.invalidReturnType("Expected OCTUser; Got: \(returnVal ?? "nil")")))
                 return
             }
             completion(.data(user))
@@ -77,7 +77,7 @@ class NetworkingManager {
 
         let _ = starredReposRequest?.deliverOnMainThread().subscribeNext({ (returnVal) in
             guard let numberOfStarredRepos = returnVal as? NSNumber else {
-                completion(.error(.invalidReturnType("Expected NSNumber; Got: \(returnVal)")))
+                completion(.error(.invalidReturnType("Expected NSNumber; Got: \(returnVal ?? "nil")")))
                 return
             }
             completion(.data(numberOfStarredRepos.intValue))

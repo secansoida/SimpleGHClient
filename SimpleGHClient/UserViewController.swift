@@ -10,6 +10,9 @@ import UIKit
 import OctoKit
 import AFNetworking
 
+private let FavouriteButtonTitleAdd = "Add to favourites"
+private let FavouriteButtonTitleRemove = "Remove from favourites"
+
 class UserViewController: UIViewController {
 
     @IBOutlet weak var avatarImageView: UIImageView!
@@ -48,6 +51,20 @@ class UserViewController: UIViewController {
         self.followersCountLabel.layer.cornerRadius = self.followersCountLabel.frame.height / 2
         self.starsCountLabel.layer.cornerRadius = self.starsCountLabel.frame.height / 2
     }
+    
+    @IBAction func didTapFavouriteButton() {
+        guard let user = self.userObject else {
+            return
+        }
+        
+        if UserDefaults.standard.isUserFavourite(user: user) {
+            UserDefaults.standard.removeUserFromFavourites(user: user)
+            self.favouriteButton.setTitle(FavouriteButtonTitleAdd, for: .normal)
+        } else {
+            UserDefaults.standard.addUserToFavourites(user: user)
+            self.favouriteButton.setTitle(FavouriteButtonTitleRemove, for: .normal)
+        }
+    }
 
     private func setupWithUser() {
         if let user = self.userObject {
@@ -60,9 +77,9 @@ class UserViewController: UIViewController {
             var favouriteButtonTitle : String
 
             if UserDefaults.standard.isUserFavourite(user: user) {
-                favouriteButtonTitle = "Remove from favourites"
+                favouriteButtonTitle = FavouriteButtonTitleRemove
             } else {
-                favouriteButtonTitle = "Add to favourites"
+                favouriteButtonTitle = FavouriteButtonTitleAdd
             }
             self.favouriteButton.setTitle(favouriteButtonTitle, for: .normal)
             self.favouriteButton.isHidden = false

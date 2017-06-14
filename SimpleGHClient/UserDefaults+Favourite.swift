@@ -14,31 +14,28 @@ private let favouriteUsersKey = "favourite_users"
 extension UserDefaults {
 
     func addUserToFavourites(user : OCTUser) {
-        guard let json = MTLJSONAdapter.jsonDictionary(from: user) else {
-            return
-        }
+        let data = NSKeyedArchiver.archivedData(withRootObject: user)
     
-        if let savedUsers = self.favouriteUsersJSONs() {
-            self.set([json] + savedUsers, forKey: favouriteUsersKey)
+        if let savedUsers = self.favouriteUsersData() {
+            self.set([data] + savedUsers, forKey: favouriteUsersKey)
         } else {
-            self.set([json], forKey: favouriteUsersKey)
+            self.set([data], forKey: favouriteUsersKey)
         }
     }
     
-    func favouriteUsersJSONs() -> [[AnyHashable : Any]]? {
-        if let favouriteUsersJSONs = self.object(forKey: favouriteUsersKey) as? [[AnyHashable : Any]] {
-            return favouriteUsersJSONs
+    func removeUserFromFavourites(user : OCTUser) {
+        self.set(self.favouriteUsers().filter{ $0.objectID != user.objectID }.flatMap{ MTLJSONAdapter.jsonDictionary(from: $0)}, forKey: favouriteUsersKey)
+    }
+    
+    func favouriteUsersData() -> [Data]? {
+        if let favouriteUsersData = self.object(forKey: favouriteUsersKey) as? [Data] {
+            return favouriteUsersData
         }
         return nil
     }
     
     func favouriteUsers() -> [OCTUser] {
-        return self.favouriteUsersJSONs()?.flatMap {
-            if let user = try? MTLJSONAdapter.model(of: OCTUser.self, fromJSONDictionary: $0, error: ()) as? OCTUser {
-                return user
-            }
-        return nil
-        } ?? []
+        return self.favouriteUsersData()?.flatMap { NSKeyedUnarchiver.unarchiveObject(with: $0) as? OCTUser } ?? []
     }
     
     func isUserFavourite(user : OCTUser) -> Bool {
